@@ -1,3 +1,43 @@
-<div class="cstrEmbed" data-type="newStreamPlayer" data-publicToken="d62b80d0-d1f5-4329-a00e-0c2af01ad5a5" data-theme="dark" data-color="6C2BDD" data-channelId="" data-rendered="false">
-<a href="https://www.caster.fm">Shoutcast Hosting</a> <a href="https://www.caster.fm">Stream Hosting</a> <a href="https://www.caster.fm">Radio Server Hosting</a></div>
-<script src="//cdn.cloud.caster.fm//widgets/embed.js"></script>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Music-FM</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #ffffff;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .player-container {
+      background: #333;
+      border-radius: 10px;
+      padding: 20px;
+      display: inline-block;
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player-container">
+    <h1>🎧 MUSIC-FM</h1>
+    <audio controls autoplay>
+      <source src="http://sapircast.caster.fm:13294/MFr94">
+      Je browser ondersteunt geen audio-element.
+    </audio>
+  </div>
+
+</body>
+</html>
