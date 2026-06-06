@@ -1,45 +1,75 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <title>Music-FM</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Webplayer</title>
+
+<style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #1e1e1e;
-      color: #ffffff;
-      text-align: center;
-      padding: 50px;
+        font-family: Arial, sans-serif;
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding-top: 50px;
     }
 
-    .player-container {
-      background: #333;
-      border-radius: 10px;
-      padding: 20px;
-      display: inline-block;
+    .player {
+        width: 350px;
+        margin: auto;
+        background: #2b2b2b;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
     }
 
-    audio {
-      width: 100%;
-      margin-top: 10px;
+    button {
+        background: #ff6600;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        margin-top: 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
     }
 
-    h1 {
-      margin-bottom: 20px;
+    button:hover {
+        background: #e55c00;
     }
-  </style>
+
+    h2 {
+        margin-bottom: 10px;
+    }
+</style>
 </head>
 <body>
 
-  <div class="player-container">
-    <h1>🎧 MUSIC-FM</h1>
-    <audio controls autoplay>
-      <source src="http://uk16freenew.listen2myradio.com:10001" type="audio/mpeg">
-      Je browser ondersteunt geen audio-element.
+<div class="player">
+    <h2>🎵 Mijn Radio</h2>
+
+    <audio id="radioPlayer" preload="none">
+        <source src="http://uk16freenew.listen2myradio.com:10001" type="audio/mpeg">
+        Je browser ondersteunt geen audio.
     </audio>
-  </div>
+
+    <button onclick="toggleRadio()">▶ Afspelen</button>
+</div>
+
+<script>
+const player = document.getElementById('radioPlayer');
+const button = document.querySelector('button');
+
+function toggleRadio() {
+    if (player.paused) {
+        player.play();
+        button.textContent = '⏸ Pauzeren';
+    } else {
+        player.pause();
+        button.textContent = '▶ Afspelen';
+    }
+}
+</script>
 
 </body>
 </html>
-
-
