@@ -3,72 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radio Webplayer</title>
+<title>Radio Live</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #1a1a1a;
-        color: white;
-        text-align: center;
-        padding-top: 50px;
-    }
+body{
+    margin:0;
+    background:#111;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
 
-    .player {
-        width: 350px;
-        margin: auto;
-        background: #2b2b2b;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
+.player{
+    background:#222;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    width:350px;
+    box-shadow:0 0 20px rgba(0,0,0,.5);
+}
 
-    button {
-        background: #ff6600;
-        border: none;
-        color: white;
-        padding: 12px 20px;
-        margin-top: 10px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+.logo{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    margin-bottom:15px;
+    object-fit:cover;
+}
 
-    button:hover {
-        background: #e55c00;
-    }
+button{
+    background:#ff6600;
+    color:#fff;
+    border:none;
+    padding:12px 25px;
+    font-size:16px;
+    border-radius:8px;
+    cursor:pointer;
+}
 
-    h2 {
-        margin-bottom: 10px;
-    }
+button:hover{
+    background:#e65c00;
+}
+
+input[type=range]{
+    width:100%;
+    margin-top:15px;
+}
 </style>
 </head>
 <body>
 
 <div class="player">
-    <h2>🎵 Mijn Radio</h2>
 
-    <audio id="radioPlayer" preload="none">
-        <source src="http://uk16freenew.listen2myradio.com:10001" type="audio/mpeg">
-        Je browser ondersteunt geen audio.
+    <!-- Vervang logo.jpg door je eigen logo -->
+    <img src="logo.jpg" class="logo" alt="Radio Logo">
+
+    <h2>🎙️ Live Radio</h2>
+
+    <audio id="radio">
+        <source src="http://uk16freenew.listen2myradio.com:10001/" type="audio/mpeg">
     </audio>
 
-    <button onclick="toggleRadio()">▶ Afspelen</button>
+    <button id="playBtn">▶ Start Radio</button>
+
+    <br><br>
+
+    <label>Volume</label>
+    <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+
 </div>
 
 <script>
-const player = document.getElementById('radioPlayer');
-const button = document.querySelector('button');
+const radio = document.getElementById("radio");
+const playBtn = document.getElementById("playBtn");
+const volume = document.getElementById("volume");
 
-function toggleRadio() {
-    if (player.paused) {
-        player.play();
-        button.textContent = '⏸ Pauzeren';
+playBtn.addEventListener("click", () => {
+    if (radio.paused) {
+        radio.play();
+        playBtn.textContent = "⏸ Stop Radio";
     } else {
-        player.pause();
-        button.textContent = '▶ Afspelen';
+        radio.pause();
+        playBtn.textContent = "▶ Start Radio";
     }
-}
+});
+
+volume.addEventListener("input", () => {
+    radio.volume = volume.value;
+});
 </script>
 
 </body>
